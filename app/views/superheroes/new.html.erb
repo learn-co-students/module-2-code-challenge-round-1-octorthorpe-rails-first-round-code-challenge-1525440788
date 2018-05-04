@@ -1,0 +1,24 @@
+<h1>Create a New Superhero!</h1>
+<% if flash[:errors] %>
+    <br>
+    <% flash[:errors].each do |error| %>
+        <%= error %>. 
+    <% end %>
+    <br><br>
+<% end %>
+<%= form_for @superhero do |t| %>
+    <%= t.label :name %>: <br>
+    <%= t.text_field :name %><br><br>
+
+    <%= t.label :super_name %>: <br>
+    <%= t.text_field :super_name %><br><br>
+
+    <%= t.collection_select :superpower_id, @superpowers, :id, :name, include_blank: true %>
+    
+    <br><br>
+
+    <%= t.submit%>
+<% end %>
+
+<br><br><br>
+<%= link_to "< Cancel", superheroes_path %>
