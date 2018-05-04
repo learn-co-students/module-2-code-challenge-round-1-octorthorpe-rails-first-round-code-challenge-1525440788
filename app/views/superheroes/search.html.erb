@@ -1,0 +1,27 @@
+<h2>All Superheroes related to <em><%= @search_word %></em></h2>
+
+<% if @powers.first %>
+    <ul>
+    <% @powers.each do |power| %>
+        <% power.superheroes.each do |superhero| %>
+            <li>
+                <%= link_to superhero.super_name, superhero %>
+            </li>
+        <% end %>
+        <br>
+    <% end %>
+    </ul>
+<% else %>
+    <h3>Sorry, no matches for <em><%= @search_word %></em>.</h3>
+    You can try another search:
+    <%= form_tag("/superheroes/search/keyword", method: "get") do %>
+        <%= label_tag(:q, "Search Superpowers:") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+    <% end %>
+
+<% end %>
+
+<br><br>
+
+<%= link_to "< View ALL Superheroes", superheroes_path  %>

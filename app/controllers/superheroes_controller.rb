@@ -8,6 +8,13 @@ class SuperheroesController < ApplicationController
   def show
   end
 
+  def search
+    @search_word = params[:q]
+    @powers = Superpower.all.select do |power|
+      power.name.downcase.include?(params[:q].downcase) || power.description.downcase.include?(params[:q].downcase)
+    end
+  end
+
   def new
     @superhero = Superhero.new
     @superpowers = Superpower.all

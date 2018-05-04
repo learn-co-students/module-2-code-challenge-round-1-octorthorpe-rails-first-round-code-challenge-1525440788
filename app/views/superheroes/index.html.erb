@@ -8,5 +8,14 @@
     <br>
   <% end %>
 </ul>
+
+<h4>Search Superpowers:</h4>
+<%= form_tag("/superheroes/search/keyword", method: "get") do %>
+  <%= label_tag(:q, "Search Superpowers:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <br><br>
-<%= link_to "View All Superpowers >", superpowers_path %>
+
+<%= link_to "Create Your Own Superhero!", new_superhero_path %>&nbsp;&nbsp; | &nbsp;&nbsp;<%= link_to "View All Superpowers >", superpowers_path %>
